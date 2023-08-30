@@ -1,0 +1,14 @@
+services:
+  web:
+    build: .
+    volumes:
+      - ./:/app
+    entrypoint: ["npm", "run", "dev"]
+    ports:
+      - "8080:8080"
+  keycloak:
+    image: "quay.io/keycloak/keycloak:22.0.1"
+    command: ["start-dev"]
+    environment:
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
