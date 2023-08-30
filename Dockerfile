@@ -2,10 +2,10 @@ FROM node
 
 WORKDIR /app
 
-COPY . /app
+COPY ["package.json", "package-lock.json*", "./"]
 
-COPY package*.json /app
+RUN npm install 
 
-RUN npm i 
+COPY . .
 
-ENTRYPOINT [ "npm", "start" ]
+CMD ["npm", "start"]
